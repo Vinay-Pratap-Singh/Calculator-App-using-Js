@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator App</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/6ebb309f55.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="m-0 p-0 outline-0 box-border bg-black">
+
+  <!-- Creating the header of the Calculator with dark and light mode feature -->
+  <section class="flex justify-center mt-10 sm:mt-6">
+    <div id="colorMode" class="bg-[#161616] px-4 py-2 rounded-lg flex gap-4">
+      <i id="darkModeBtn" onclick="darkMode()" class="fa-solid fa-sun text-cyan-500 cursor-pointer"></i>
+      <i id="lightModeBtn" onclick="lightMode()" class="fa-solid fa-moon text-gray-600 cursor-pointer"></i>
+    </div>
+  </section>
+
+  <!-- Creating the text area to display the input and output -->
+  <section id="inputOutput" class="mt-20 sm:mt-6 flex flex-col gap-1 text-white px-10 text-right font-bold">
+    <p id="inputBox" class="px-2 h-8 text-base">0</p>  
+    <p id="outputBox" class="px-2 h-8 text-3xl">0</p>
+  </section>
+
+
+  <!-- Creating the numbers buttons to take the input of the numbers and operators -->
+  <section id="myButtons" class="text-white mt-6 flex flex-col w-full p-10 bg-[#121212] gap-10 font-bold absolute bottom-0">
+    <!-- creating the five rows to place the number option for the user -->
+    <div class="row-div flex justify-between sm:justify-evenly">
+      <div id="acBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer text-cyan-500" onclick="clickme('delete')">&#x2190;</div>
+      <div id="clearBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer text-cyan-500" onclick="clickme('c')">C</div>
+      <div id="percentBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer text-cyan-500" onclick="clickme('%')">%</div>
+      <div id="divideBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer text-cyan-500" onclick="clickme('÷')">÷</div>
+    </div>
+
+    <div class="row-div flex justify-between sm:justify-evenly">
+      <div id="sevenBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('7')">7</div>
+      <div id="eightBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer"  onclick="clickme('8')">8</div>
+      <div id="nineBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('9')">9</div>
+      <div id="multiplyBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer  text-cyan-500" onclick="clickme('*')">*</div>
+    </div>
+
+    <div class="row-div flex justify-between sm:justify-evenly">
+      <div id="fourBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('4')">4</div>
+      <div id="fiveBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('5')">5</div>
+      <div id="sixBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('6')">6</div>
+      <div id="minusBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer text-cyan-500" onclick="clickme('-')">-</div>
+    </div>
+
+    <div class="row-div flex justify-between sm:justify-evenly">
+      <div id="oneBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('1')">1</div>
+      <div id="twoBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('2')">2</div>
+      <div id="threeBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('3')">3</div>
+      <div id="plusBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer text-cyan-500" onclick="clickme('+')">+</div>
+    </div>
+
+    <div class="row-div flex justify-between sm:justify-evenly">
+      <div id="doubleZeroBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('00')">00</div>
+      <div id="zeroBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('0')">0</div>
+      <div id="dotBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer" onclick="clickme('.')">.</div>
+      <div id="equalBtn" class="button bg-[#161616] w-14 sm:w-20 h-10 px-2 py-1 text-center cursor-pointer text-cyan-500" onclick="clickme('=')">=</div>
+    </div>
+  </section>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.2.1/math.min.js" integrity="sha512-P/tfgnVm6RM6aQU1tpWKjDPF6otdDVURF8dlET8Icu5IHJ4261mE6tXhh9lumrRhIOCzzi8QpaPQ2urpY6sK8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./script.js"></script>
+</html>
